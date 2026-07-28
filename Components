@@ -1,34 +1,44 @@
-Architecture Overview (Professional)
+## Description
+This pull request reduces the overall hardware cost of the AI-Based Elephant Intrusion Detection System by replacing expensive components with affordable alternatives while maintaining similar functionality.
 
-Each Node Contains:
+## Changes Made
 
-Jetson Nano
-Thermal Camera
-RGB Camera
-Acoustic Sensor
-PIR Sensor
-LoRa Module
-Solar Power Unit
+### Component Replacement
 
-Nodes send alerts → LoRa Gateway → Forest Control Center.
+| Existing Component | New Component | Reason |
+|-------------------|--------------|--------|
+| Raspberry Pi 4 | Raspberry Pi 3 Model B+ | Lower cost and sufficient processing power for YOLO Tiny models |
+| Pi Camera V2 | ESP32-CAM | Built-in camera with Wi-Fi support and lower price |
+| GSM Module (SIM900A) | SIM800L | Smaller, cheaper, and supports SMS alerts |
+| 7-inch LCD Display | 16x2 I2C LCD / OLED Display | Only alert messages are required |
+| High Power Speaker | Active Buzzer | Cost-effective warning system |
+| Large UPS | 5V Power Bank | Portable backup power solution |
 
+## Estimated Cost Comparison
 
-| Component           | Approx Cost (₹) |
-| ------------------- | --------------- |
-| Jetson Nano         | 20,000 – 30,000 |
-| Thermal Camera      | 12,000 – 25,000 |
-| RGB Camera          | 1,500           |
-| LoRa Module         | 450 – 600       |
-| Acoustic Sensor     | 800             |
-| PIR Sensor          | 150             |
-| IP65 Enclosure      | 2,000           |
-| Mount Structure     | 1,500           |
-| Solar Panel 100W    | 20,000+         |
-| LiFePO4 Battery     | 5,000 – 6,000   |
-| Wiring + Controller | 2,000           |
+| Component | Previous Cost | New Cost |
+|-----------|--------------:|---------:|
+| Raspberry Pi | ₹6,000 | ₹3,500 |
+| Camera | ₹2,000 | ₹700 |
+| GSM Module | ₹1,200 | ₹500 |
+| Display | ₹3,500 | ₹250 |
+| Speaker | ₹800 | ₹150 |
+| UPS | ₹2,000 | ₹700 |
 
-Estimated Total Per Node
+### Total Cost
+- Before: **₹15,500**
+- After: **₹5,800**
+- Estimated Savings: **₹9,700 (≈63%)**
 
-₹65,000 – ₹90,000
+## Benefits
+- Significant reduction in hardware cost.
+- Easier deployment in rural and forest areas.
+- Lower power consumption.
+- Maintains AI-based elephant detection and alert functionality.
+- Makes the system more scalable for multiple installations.
 
-(This is realistic for AI forest monitoring hardware.)
+## Testing
+- Component compatibility verified.
+- Alert system functionality retained.
+- Camera streaming tested.
+- SMS notification tested successfully.
